@@ -1,0 +1,218 @@
+
+// ==================== COMPREHENSIVE EMISSION DATA (93 ACTIVITIES) ====================
+
+const emissionData = {
+    scope1: {
+        title: "Scope 1 - Émissions Directes",
+        categories: {
+            "Combustibles fossiles": [
+                {name: "Essence", unit: "litre", factor: 2.31},
+                {name: "Diesel", unit: "litre", factor: 2.68},
+                {name: "Gaz de Pétrole Liquéfié - GPL", unit: "litre", factor: 1.51},
+                {name: "Gaz naturel", unit: "m³", factor: 2.04},
+                {name: "Charbon", unit: "kg", factor: 2.40},
+                {name: "Fioul domestique", unit: "litre", factor: 3.15},
+                {name: "Fioul lourd", unit: "litre", factor: 3.20},
+                {name: "Kérosène", unit: "litre", factor: 2.51},
+                {name: "Propane", unit: "litre", factor: 1.64},
+                {name: "Butane", unit: "litre", factor: 1.53},
+                {name: "Biocarburants", unit: "litre", factor: 0.50}
+            ],
+            "Gaz réfrigérants et climatisation": [
+                {name: "HFC (Hydrofluorocarbures)", unit: "kg", factor: 4430},
+                {name: "PFC (Perfluorocarbures)", unit: "kg", factor: 10000},
+                {name: "SF6 (Hexafluorure de soufre)", unit: "kg", factor: 23500},
+                {name: "R-410A, R-134a, R-404A", unit: "kg", factor: 2088}
+            ],
+            "Processus industriels": [
+                {name: "Ciment", unit: "kg", factor: 0.92},
+                {name: "Chaux", unit: "kg", factor: 1.20},
+                {name: "Ammoniac", unit: "kg", factor: 2.45},
+                {name: "Acide nitrique", unit: "kg", factor: 6.80}
+            ]
+        }
+    },
+    scope2: {
+        title: "Scope 2 - Émissions Indirectes Liées à l'Énergie",
+        categories: {
+            "Énergie": [
+                {name: "Électricité (Tunisie)", unit: "kWh", factor: 0.468},
+                {name: "Électricité (autre pays)", unit: "kWh", factor: 0.400},
+                {name: "Chauffage urbain", unit: "kWh", factor: 0.15},
+                {name: "Refroidissement urbain", unit: "kWh", factor: 0.12},
+                {name: "Vapeur", unit: "kWh", factor: 0.10},
+                {name: "Électricité autoconsommée", unit: "kWh", factor: 0.0}
+            ]
+        }
+    },
+    scope3: {
+        title: "Scope 3 - Autres Émissions Indirectes",
+        categories: {
+            "Catégorie 1 : Biens et services achetés": [
+                {name: "Papier", unit: "kg", factor: 1.20},
+                {name: "Carton", unit: "kg", factor: 0.80},
+                {name: "Plastique", unit: "kg", factor: 3.50},
+                {name: "Métal", unit: "kg", factor: 2.70},
+                {name: "Électronique", unit: "unités", factor: 50.0},
+                {name: "Mobilier", unit: "unités", factor: 100.0},
+                {name: "Fournitures de bureau", unit: "kg", factor: 2.50},
+                {name: "Produits chimiques", unit: "kg", factor: 4.20},
+                {name: "Vêtements de travail", unit: "kg", factor: 8.50}
+            ],
+            "Catégorie 2 : Biens d'équipement": [
+                {name: "Ordinateurs", unit: "unités", factor: 200.0},
+                {name: "Serveurs", unit: "unités", factor: 500.0},
+                {name: "Véhicules achetés", unit: "unités", factor: 5000.0},
+                {name: "Machines industrielles", unit: "unités", factor: 1500.0},
+                {name: "Bâtiments construits", unit: "m²", factor: 150.0}
+            ],
+            "Catégorie 3 : Énergie non incluse": [
+                {name: "Production de combustibles", unit: "litre", factor: 0.30},
+                {name: "Transport et distribution d'énergie", unit: "kWh", factor: 0.05}
+            ],
+            "Catégorie 4 : Transport amont": [
+                {name: "Camion", unit: "km-t", factor: 0.09},
+                {name: "Train de marchandises", unit: "km-t", factor: 0.02},
+                {name: "Bateau", unit: "km-t", factor: 0.01},
+                {name: "Avion cargo", unit: "km-t", factor: 0.50},
+                {name: "Fret maritime", unit: "TEU-km", factor: 0.008}
+            ],
+            "Catégorie 5 : Déchets": [
+                {name: "Déchets non dangereux", unit: "kg", factor: 0.50},
+                {name: "Déchets dangereux", unit: "kg", factor: 1.50},
+                {name: "Déchets recyclés", unit: "kg", factor: 0.15},
+                {name: "Déchets incinérés", unit: "kg", factor: 2.50},
+                {name: "Déchets en décharge", unit: "kg", factor: 1.80},
+                {name: "Déchets organiques/compost", unit: "kg", factor: 0.30}
+            ],
+            "Catégorie 6 : Déplacements professionnels": [
+                {name: "Voiture personnelle", unit: "km", factor: 0.21},
+                {name: "Voiture de location", unit: "km", factor: 0.21},
+                {name: "Avion - court courrier", unit: "km", factor: 0.000255},
+                {name: "Avion - moyen courrier", unit: "km", factor: 0.000175},
+                {name: "Avion - long courrier", unit: "km", factor: 0.000155},
+                {name: "Train", unit: "km", factor: 0.000041},
+                {name: "Bus", unit: "km", factor: 0.000089},
+                {name: "Taxi", unit: "km", factor: 0.000210},
+                {name: "Métro/Tramway", unit: "km", factor: 0.000050},
+                {name: "Hôtel", unit: "nuitées", factor: 25.0},
+                {name: "Restaurant", unit: "repas", factor: 2.50}
+            ],
+            "Catégorie 7 : Déplacements domicile-travail": [
+                {name: "Voiture", unit: "km", factor: 0.21},
+                {name: "Transport en commun", unit: "km", factor: 0.000089},
+                {name: "Moto/Scooter", unit: "km", factor: 0.150},
+                {name: "Vélo électrique", unit: "km", factor: 0.010},
+                {name: "Covoiturage", unit: "km", factor: 0.105}
+            ],
+            "Catégorie 8 : Actifs loués (amont)": [
+                {name: "Bâtiments loués", unit: "m²", factor: 0.15},
+                {name: "Véhicules loués", unit: "km", factor: 0.21},
+                {name: "Équipements loués", unit: "unités", factor: 50.0}
+            ],
+            "Catégorie 9 : Transport aval": [
+                {name: "Livraison clients - camion", unit: "km-t", factor: 0.09},
+                {name: "Livraison clients - avion", unit: "km-t", factor: 0.50},
+                {name: "Distribution finale", unit: "km", factor: 0.21}
+            ],
+            "Catégorie 10 : Transformation": [
+                {name: "Énergie de transformation", unit: "kWh", factor: 0.468},
+                {name: "Matières de transformation", unit: "kg", factor: 2.50}
+            ],
+            "Catégorie 11 : Utilisation des produits": [
+                {name: "Électricité consommée", unit: "kWh", factor: 0.468},
+                {name: "Carburant consommé", unit: "litre", factor: 2.31}
+            ],
+            "Catégorie 12 : Fin de vie": [
+                {name: "Recyclage des produits", unit: "kg", factor: 0.20},
+                {name: "Incinération des produits", unit: "kg", factor: 2.50},
+                {name: "Enfouissement des produits", unit: "kg", factor: 1.80}
+            ],
+            "Catégorie 13 : Actifs loués (aval)": [
+                {name: "Bâtiments loués à des tiers", unit: "m²", factor: 0.15}
+            ],
+            "Catégorie 14 : Franchises": [
+                {name: "Émissions des franchises", unit: "tCO2e", factor: 1.0}
+            ],
+            "Catégorie 15 : Investissements": [
+                {name: "Actions et obligations", unit: "€", factor: 0.00025},
+                {name: "Prêts", unit: "€", factor: 0.00015}
+            ],
+            "Autres catégories transversales": [
+                {name: "Eau potable", unit: "m³", factor: 0.30},
+                {name: "Eaux usées", unit: "m³", factor: 0.50},
+                {name: "Numérique - Data centers", unit: "kWh", factor: 0.468},
+                {name: "Numérique - Cloud computing", unit: "Go", factor: 0.001},
+                {name: "Télécommunications", unit: "minutes/Go", factor: 0.0001},
+                {name: "Publicité et marketing", unit: "€", factor: 0.0005},
+                {name: "Services bancaires", unit: "transactions", factor: 0.05},
+                {name: "Assurances", unit: "€", factor: 0.00020}
+            ]
+        }
+    }
+};
+
+let calculationResults = {scope1: 0, scope2: 0, scope3: 0, total: 0, details: {}};
+let pieChart = null;
+let barChart = null;
+
+// ==================== INITIALIZATION ====================
+window.addEventListener('DOMContentLoaded', () => {
+    renderEmissionForms();
+    loadTheme();
+    animateShooting();
+});
+
+// ==================== RENDERING ====================
+function renderEmissionForms() {
+    renderScopeForm('scope1');
+    renderScopeForm('scope2');
+    renderScopeForm('scope3');
+    renderFactorsTable();
+}
+
+function renderScopeForm(scopeName) {
+    const scope = emissionData[scopeName];
+    const container = document.getElementById(`${scopeName}-content`);
+    let html = '';
+
+    for (const [category, activities] of Object.entries(scope.categories)) {
+        html += `
+            <div class="category-section">
+                <div class="category-title">📌 ${category}</div>
+                <div class="category-items">
+        `;
+
+        activities.forEach((activity, idx) => {
+            const inputId = `${scopeName}_${category}_${idx}`;
+            html += `
+                <div class="activity-input">
+                    <label>${activity.name}</label>
+                    <input type="number" id="${inputId}" placeholder="0" min="0" step="0.01">
+                    <small>${activity.unit} × ${activity.factor}</small>
+                </div>
+            `;
+        });
+
+        html += `</div></div>`;
+    }
+
+    container.innerHTML = html;
+}
+
+function renderFactorsTable() {
+    const container = document.getElementById('factors-content');
+    let html = '<table><thead><tr><th>Scope</th><th>Catégorie</th><th>Activité</th><th>Unité</th><th>Facteur (kg CO2e)</th></tr></thead><tbody>';
+
+    ['scope1', 'scope2', 'scope3'].forEach(scopeName => {
+        const scope = emissionData[scopeName];
+        for (const [category, activities] of Object.entries(scope.categories)) {
+            activities.forEach(activity => {
+                html += `<tr><td>${scopeName.replace('scope', 'Scope ')}</td><td>${category}</td><td>${activity.name}</td><td>${activity.unit}</td><td><input type="number" value="${activity.factor}" class="factor-input" style="width:100%;"></td></tr>`;
+            });
+        }
+    });
+
+    html += '</tbody></table>';
+    container.innerHTML = html;
+}
