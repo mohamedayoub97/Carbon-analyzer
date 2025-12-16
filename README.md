@@ -66,13 +66,13 @@ Analyse complète et interactive de l'empreinte carbone des entreprises tunisien
 
 #### 1. Cloner/Créer le Repository
 ```bash
-git clone (https://github.com/mohamedayoub97/Carbon-analyzer.git)
+git clone https://github.com/mohamedayoub97/Carbon-analyzer.git
 cd carbon-analyzer
 ```
 
 #### 2. Structure des Fichiers
 ```
-carbon-footprint-analyzer/
+carbon-analyzer/
 ├── index.html           # Application principale
 ├── styles.css          # Styles complets
 ├── app.js              # Logique & données (93 activités)
@@ -84,7 +84,7 @@ carbon-footprint-analyzer/
 #### 3. Pousser vers GitHub
 ```bash
 git add .
-git commit -m "Deploy Carbon Footprint Analyzer v1.0 - Production Ready"
+git commit -m "Deploy Carbon Analyzer v1.0 - Production Ready"
 git push origin main
 ```
 
